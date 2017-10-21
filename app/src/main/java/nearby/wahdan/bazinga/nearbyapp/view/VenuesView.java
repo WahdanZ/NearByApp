@@ -3,9 +3,11 @@ package nearby.wahdan.bazinga.nearbyapp.view;
 import android.Manifest;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -73,6 +75,7 @@ public class VenuesView extends AppCompatActivity {
         if (!connectionModel.getIsConnected()){
 
             stateful.showOffline("no Internet connection ",view -> {
+                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                 isOnline = false;
             });
         }
@@ -106,7 +109,14 @@ public class VenuesView extends AppCompatActivity {
 
         }
         else{
-            stateful.showLocationOff(view -> Log.d("VenuesView", "no gps"));
+            if (isOnline)
+            stateful.showLocationOff(view ->
+                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)));
+            else
+                stateful.showOffline("no Internet connection ",view -> {
+                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    isOnline = false;
+                });
 
         }
     }
