@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="nearby.wahdan.bazinga.nearbyapp.view.VenuesView">
+    <item
+        android:id="@+id/real_time_Action"
+        android:orderInCategory="100"
+        android:title="@string/real_time"
+        app:showAsAction="always" />
+</menu>
