@@ -1,5 +1,8 @@
 NearByApp
-MVVM , RxJAVA , Android Architecture Components , LiveData
+
+usning MVVM , RxJAVA , Android Architecture Components , LiveData
+
+Description
 
 App uses Foursquare API to display information about nearby places
 around user using user’s current location specified by Latitude and
